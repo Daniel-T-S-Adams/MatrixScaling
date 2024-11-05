@@ -1,9 +1,19 @@
 import numpy as np
+import logging
 from typing import Tuple
 
-def Baseline_algorithm(A: np.ndarray, r: np.ndarray, c: np.ndarray, epsilon: float, max_iter: int = int(1e10)) -> Tuple[np.ndarray, np.ndarray]:
+def baseline_algorithm(
+    A: np.ndarray,
+    r: np.ndarray,
+    c: np.ndarray,
+    epsilon: float,
+    max_iter: int = 1_000_000,
+    verbose: bool = True
+) -> Tuple[np.ndarray, np.ndarray]:
+    """
+    Baseline algorithm for matrix scaling using iterative proportional fitting.
+    """
     n, m = A.shape
-
     # Initialize scaling vectors
     u = np.ones((n, 1))
     v = np.ones((m, 1))
